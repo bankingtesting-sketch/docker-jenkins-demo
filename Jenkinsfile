@@ -2,28 +2,27 @@ pipeline {
 
     agent any
 
+    parameters {
+
+        choice(
+            name: 'ENV',
+            choices: [
+                'DEV',
+                'QA',
+                'STAGING',
+                'PRODUCTION'
+            ]
+        )
+
+    }
+
     stages {
-
-        stage('Build') {
-
-            steps {
-
-                echo 'Building'
-            }
-
-        }
 
         stage('Deploy') {
 
-            when {
-
-                branch 'main'
-
-            }
-
             steps {
 
-                echo 'Deploying Production'
+                echo "Deploying to ${params.ENV}"
 
             }
 
