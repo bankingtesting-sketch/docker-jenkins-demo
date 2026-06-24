@@ -4,24 +4,27 @@ pipeline {
 
     stages {
 
-        stage('Checkout') {
+        stage('Build') {
 
             steps {
 
-                checkout scm
-
+                echo 'Building'
             }
 
         }
 
-        stage('Docker Build') {
+        stage('Deploy') {
+
+            when {
+
+                branch 'main'
+
+            }
 
             steps {
 
-                sh '''
-                docker build \
-                -t docker-demo:v1 .
-                '''
+                echo 'Deploying Production'
+
             }
 
         }
