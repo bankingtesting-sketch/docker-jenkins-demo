@@ -13,6 +13,22 @@ pipeline {
                 'PRODUCTION'
             ]
         )
+        choice(
+            name: 'VERSION',
+            choices: [
+                '1.0.0',
+                '1.1.0',
+                '1.2.0'
+            ]
+        )
+        choice(
+            name:'AGENT',
+            choices: [
+                'agent1',
+                'agent2',
+                'agent3'
+            ]
+        )
 
     }
 
